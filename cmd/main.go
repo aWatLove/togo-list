@@ -16,6 +16,17 @@ import (
 	"github.com/spf13/viper"
 )
 
+// @title toGO-list API
+// @version 1.0
+// @description API for todo-list application
+
+// @host localhost:8080
+// @BasePath /
+
+// @SecurityDefinitions.apikey ApiKeyAuth
+// @in header
+// @name Authorization
+
 func main() {
 	logrus.SetFormatter(new(logrus.JSONFormatter))
 
@@ -50,13 +61,13 @@ func main() {
 		}
 	}()
 	
-	logrus.Print("ToGo-List Started")
+	logrus.Print("toGO-list Started")
 
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGTERM, syscall.SIGINT)
 	<-quit
 
-	logrus.Print("ToGo-List Shutting Down")
+	logrus.Print("toGO-list Shutting Down")
 
 	if err := srv.Shutdown(context.Background()); err != nil {
 		logrus.Errorf("error occured on server shutting down: %s", err.Error())
