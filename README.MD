@@ -26,7 +26,7 @@ cd togo-list
 go get -d ./...
 ```
 4. Create a `.env` file in the root directory of the project and add database connection details. Here is an example of what the `.env` file should look like:
-```
+```dotenv
 DB_USERNAME=username
 DB_PASSWORD=password
 DB_HOST=localhost
