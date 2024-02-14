@@ -20,26 +20,10 @@ git clone https://github.com/aWatLove/togo-list.git
 cd togo-list
 ```
 
-3. Install the required dependencies:
+3. Build the project:
 
 ```bash
-go get -d ./...
-```
-4. Create a `.env` file in the root directory of the project and add database connection details. Here is an example of what the `.env` file should look like:
-```dotenv
-DB_USERNAME=username
-DB_PASSWORD=password
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=togo-list
-DB_SSLMODE=disable
-```
-
-
-5. Build the project:
-
-```bash
-go build .\cmd\main.go
+docker-compose up --build
 ```
 
 ## Usage
@@ -47,7 +31,7 @@ go build .\cmd\main.go
 To run the toGO-List API, use the following command:
 
 ```bash
-./main.exe
+docker-compose up
 ```
 
 The API will be available at `http://localhost:8080`.
