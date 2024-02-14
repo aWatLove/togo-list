@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	todo2 "github.com/aWatLove/togo-list/pkg/model"
 	"os"
 	"os/signal"
 	"syscall"
@@ -49,6 +50,7 @@ func main() {
 	if err != nil {
 		logrus.Fatalf("failed to initialized db: %s", err.Error())
 	}
+	db.AutoMigrate(&todo2.TodoList{}, &todo2.TodoItem{}, &todo2.User{}, &todo2.ListsItem{}, &todo2.UsersList{})
 
 	repos := repository.NewRepository(db)
 	services := service.NewService(repos)
@@ -60,7 +62,7 @@ func main() {
 			logrus.Fatalf("error occured while running http server: %s", err.Error())
 		}
 	}()
-	
+
 	logrus.Print("toGO-list Started")
 
 	quit := make(chan os.Signal, 1)
