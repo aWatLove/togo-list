@@ -11,16 +11,22 @@ services:
       - db
     env_file:
       - .env
+    networks:
+      - mynetwork
 
   db:
     image: postgres:latest
     restart: always
-    ports:
-      - "5432:5432"
     env_file:
       - postgres.env
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
 
 volumes:
   postgres_data:
